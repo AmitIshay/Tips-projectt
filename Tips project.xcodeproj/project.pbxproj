@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C325DD412C691EA300EB2732 /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325DD402C691EA300EB2732 /* Worker.swift */; };
 		C36DBB152C67CAA800BFC1A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DBB142C67CAA800BFC1A2 /* AppDelegate.swift */; };
 		C36DBB172C67CAA800BFC1A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DBB162C67CAA800BFC1A2 /* SceneDelegate.swift */; };
 		C36DBB192C67CAA800BFC1A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DBB182C67CAA800BFC1A2 /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C325DD402C691EA300EB2732 /* Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
 		C36DBB112C67CAA800BFC1A2 /* Tips project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tips project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C36DBB142C67CAA800BFC1A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C36DBB162C67CAA800BFC1A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				C36DBB1F2C67CAA900BFC1A2 /* LaunchScreen.storyboard */,
 				C36DBB222C67CAA900BFC1A2 /* Info.plist */,
 				C36DBB442C67CCC400BFC1A2 /* CalcTips.swift */,
+				C325DD402C691EA300EB2732 /* Worker.swift */,
 			);
 			path = "Tips project";
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C325DD412C691EA300EB2732 /* Worker.swift in Sources */,
 				C36DBB452C67CCC400BFC1A2 /* CalcTips.swift in Sources */,
 				C36DBB192C67CAA800BFC1A2 /* ViewController.swift in Sources */,
 				C36DBB152C67CAA800BFC1A2 /* AppDelegate.swift in Sources */,
