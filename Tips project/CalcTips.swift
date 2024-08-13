@@ -1,13 +1,6 @@
-//
-//  ViewController.swift
-//  Tips project
-//
-//  Created by Student22 on 10/08/2024.
-//
-
 import UIKit
 
-class CalcTips: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CalcTips: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
@@ -19,18 +12,38 @@ class CalcTips: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Set the data source and delegate
-                tableView.dataSource = self
-                tableView.delegate = self
-                
-                // Register a default cell
-                tableView.register(UITableViewCell.self, forCellReuseIdentifier: "WorkerCell")
-            }
-    
-    
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        // Register a default cell
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "WorkerCell")
+        
+        // Set up the workerTime text field with a time picker
+        setupTimePicker()
+        
+        // Set self as delegate for text fields
+        workerTime.delegate = self
+        nameInput.delegate = self
+    }
+
+    private func setupTimePicker() {
+        let timePicker = UIDatePicker()
+        timePicker.datePickerMode = .time
+        timePicker.addTarget(self, action: #selector(timeChanged(_:)), for: .valueChanged)
+        workerTime.inputView = timePicker
+    }
+
+    @objc private func timeChanged(_ sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        workerTime.text = dateFormatter.string(from: sender.date)
+    }
+
     @IBAction func nextButtonView(_ sender: Any) {
     }
-    
+
     @IBAction func addWorkerButton(_ sender: Any) {
         // Ensure that both fields are not empty
         guard let name = nameInput.text, !name.isEmpty,
@@ -56,6 +69,7 @@ class CalcTips: UIViewController, UITableViewDataSource, UITableViewDelegate {
         nameInput.text = ""
         workerTime.text = ""
     }
+
     func updateTotalHoursLabel() {
         var totalMinutes = 0
         
@@ -72,7 +86,7 @@ class CalcTips: UIViewController, UITableViewDataSource, UITableViewDelegate {
         // Update the label
         totalHoursLbl.text = String(format: "%02d:%02d", hours, minutes)
     }
-    
+
     func timeStringToMinutes(_ timeString: String) -> Int? {
         let components = timeString.split(separator: ":")
         if components.count == 2,
@@ -82,16 +96,15 @@ class CalcTips: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
         return nil
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return workers.count
-        }
-        
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerCell", for: indexPath)
-            let worker = workers[indexPath.row]
-            cell.textLabel?.text = "Name: \(worker.name), Time Shift: \(worker.timeShift)"
-            return cell
-        }
-        
-}
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return workers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerCell", for: indexPath)
+        let worker = workers[indexPath.row]
+        cell.textLabel?.text = "Name: \(worker.name), Time Shift: \(worker.timeShift)"
+        return cell
+    }
+}
