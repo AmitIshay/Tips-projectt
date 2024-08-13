@@ -17,19 +17,14 @@ class CalcTips: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the data source and delegate
         tableView.dataSource = self
         tableView.delegate = self
         rolePicker.dataSource = self
         rolePicker.delegate = self
         
-        // Register a default cell
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "WorkerCell")
-        
-        // Set up the workerTime text field with a time picker
         setupTimePicker()
         
-        // Set self as delegate for text fields
         workerTime.delegate = self
         nameInput.delegate = self
     }
@@ -48,50 +43,36 @@ class CalcTips: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
     }
 
     @IBAction func nextButtonView(_ sender: Any) {
-    
-        self.performSegue(withIdentifier: "goToFinal", sender: self)
+        performSegue(withIdentifier: "goToFinal", sender: self)
     }
 
     @IBAction func addWorkerButton(_ sender: Any) {
-        // Ensure that both fields are not empty
         guard let name = nameInput.text, !name.isEmpty,
               let timeShift = workerTime.text, !timeShift.isEmpty else {
-            // Optionally show an alert to the user if fields are empty
             let alert = UIAlertController(title: "Error", message: "Please enter both name and time shift.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             return
         }
-        // Create a new Worker and add to the list
+
         let newWorker = Worker(name: name, timeShift: timeShift, role: selectedRole)
         workers.append(newWorker)
-        
-        // Print the new worker's details to the console
-        print("Added new worker: Name: \(newWorker.name), Time Shift: \(newWorker.timeShift), Role: \(newWorker.role)")
-        
-        // Optionally update the UI to reflect the new worker list
         updateTotalHoursLabel()
-        tableView.reloadData() // Refresh the table view
+        tableView.reloadData()
 
-        // Clear text fields after adding the worker
         nameInput.text = ""
         workerTime.text = ""
     }
 
     func updateTotalHoursLabel() {
         var totalMinutes = 0
-        
         for worker in workers {
             if let time = timeStringToMinutes(worker.timeShift) {
                 totalMinutes += time
             }
         }
-        
-        // Convert total minutes to hours and minutes
         let hours = totalMinutes / 60
         let minutes = totalMinutes % 60
-        
-        // Update the label
         totalHoursLbl.text = String(format: "%02d:%02d", hours, minutes)
     }
 
@@ -113,9 +94,16 @@ class CalcTips: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerCell", for: indexPath)
         let worker = workers[indexPath.row]
         cell.textLabel?.text = "Name: \(worker.name), Time Shift: \(worker.timeShift), Role: \(worker.role)"
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 12) // Change the font size here
-
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 12)
         return cell
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToFinal" {
+            let destinationVC = segue.destination as! FinalCalc
+            destinationVC.workers = self.workers
+            destinationVC.totalHoursText = self.totalHoursLbl.text
+        }
     }
 }
 
