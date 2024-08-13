@@ -78,7 +78,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="totalHours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zj-wi-QbT">
-                                <rect key="frame" x="135" y="191" width="112" height="89"/>
+                                <rect key="frame" x="140" y="301" width="112" height="89"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -89,6 +89,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQ2-7X-xmj">
+                                <rect key="frame" x="15" y="220" width="361" height="111"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="le9-xo-xcJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -97,14 +101,43 @@
                         <outlet property="addButton" destination="8tq-2g-gm7" id="4nU-Y8-82k"/>
                         <outlet property="nameInput" destination="DhM-Ro-po5" id="jal-yN-boG"/>
                         <outlet property="nextButton" destination="qdr-4k-PtG" id="IbS-AM-PFJ"/>
+                        <outlet property="rolePicker" destination="kQ2-7X-xmj" id="9DT-WW-NMc"/>
                         <outlet property="tableView" destination="FV3-BV-6HH" id="aDU-WP-VN6"/>
                         <outlet property="totalHoursLbl" destination="1Zj-wi-QbT" id="xIa-IT-7LS"/>
                         <outlet property="workerTime" destination="PaJ-rK-8rd" id="uY7-oz-SR4"/>
+                        <segue destination="8kA-pM-isJ" kind="presentation" identifier="goToFinal" id="HVe-jz-IOM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUz-xn-RSG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="674.04580152671758" y="4.9295774647887329"/>
+        </scene>
+        <!--Final Calc-->
+        <scene sceneID="ubX-4c-SsP">
+            <objects>
+                <viewController id="8kA-pM-isJ" customClass="FinalCalc" customModule="Tips_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dnn-eq-OtK">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvB-t3-yYR">
+                                <rect key="frame" x="153" y="302" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JSv-DJ-PVh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="txtlabl" destination="pvB-t3-yYR" id="kAU-aK-zR6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BS2-FQ-HqH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1324" y="5"/>
         </scene>
     </scenes>
     <resources>

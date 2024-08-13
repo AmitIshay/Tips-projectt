@@ -7,8 +7,12 @@ class CalcTips: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
     @IBOutlet weak var totalHoursLbl: UILabel!
     @IBOutlet weak var workerTime: UITextField!
     @IBOutlet weak var nameInput: UITextField!
+    @IBOutlet weak var rolePicker: UIPickerView!
     @IBOutlet weak var tableView: UITableView!
+
     var workers: [Worker] = []
+    var selectedRole = "Bartender" // Default role
+    let roles = ["Bartender", "Waiter"] // Available roles
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +20,8 @@ class CalcTips: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
         // Set the data source and delegate
         tableView.dataSource = self
         tableView.delegate = self
+        rolePicker.dataSource = self
+        rolePicker.delegate = self
         
         // Register a default cell
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "WorkerCell")
@@ -42,6 +48,8 @@ class CalcTips: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
     }
 
     @IBAction func nextButtonView(_ sender: Any) {
+    
+        self.performSegue(withIdentifier: "goToFinal", sender: self)
     }
 
     @IBAction func addWorkerButton(_ sender: Any) {
@@ -55,11 +63,11 @@ class CalcTips: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
             return
         }
         // Create a new Worker and add to the list
-        let newWorker = Worker(name: name, timeShift: timeShift)
+        let newWorker = Worker(name: name, timeShift: timeShift, role: selectedRole)
         workers.append(newWorker)
         
         // Print the new worker's details to the console
-        print("Added new worker: Name: \(newWorker.name), Time Shift: \(newWorker.timeShift)")
+        print("Added new worker: Name: \(newWorker.name), Time Shift: \(newWorker.timeShift), Role: \(newWorker.role)")
         
         // Optionally update the UI to reflect the new worker list
         updateTotalHoursLabel()
@@ -104,7 +112,30 @@ class CalcTips: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerCell", for: indexPath)
         let worker = workers[indexPath.row]
-        cell.textLabel?.text = "Name: \(worker.name), Time Shift: \(worker.timeShift)"
+        cell.textLabel?.text = "Name: \(worker.name), Time Shift: \(worker.timeShift), Role: \(worker.role)"
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 12) // Change the font size here
+
         return cell
+    }
+}
+
+// MARK: - UIPickerViewDataSource and UIPickerViewDelegate
+
+extension CalcTips: UIPickerViewDataSource, UIPickerViewDelegate {
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return roles.count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return roles[row]
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedRole = roles[row]
     }
 }

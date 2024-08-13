@@ -18,6 +18,7 @@
 		C36DBB362C67CAA900BFC1A2 /* Tips_projectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DBB352C67CAA900BFC1A2 /* Tips_projectUITests.swift */; };
 		C36DBB382C67CAA900BFC1A2 /* Tips_projectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DBB372C67CAA900BFC1A2 /* Tips_projectUITestsLaunchTests.swift */; };
 		C36DBB452C67CCC400BFC1A2 /* CalcTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DBB442C67CCC400BFC1A2 /* CalcTips.swift */; };
+		C3B9FFD02C6BDC3C0089B018 /* FinalCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B9FFCF2C6BDC3C0089B018 /* FinalCalc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		C36DBB352C67CAA900BFC1A2 /* Tips_projectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips_projectUITests.swift; sourceTree = "<group>"; };
 		C36DBB372C67CAA900BFC1A2 /* Tips_projectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips_projectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C36DBB442C67CCC400BFC1A2 /* CalcTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcTips.swift; sourceTree = "<group>"; };
+		C3B9FFCF2C6BDC3C0089B018 /* FinalCalc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalCalc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				C36DBB222C67CAA900BFC1A2 /* Info.plist */,
 				C36DBB442C67CCC400BFC1A2 /* CalcTips.swift */,
 				C325DD402C691EA300EB2732 /* Worker.swift */,
+				C3B9FFCF2C6BDC3C0089B018 /* FinalCalc.swift */,
 			);
 			path = "Tips project";
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C325DD412C691EA300EB2732 /* Worker.swift in Sources */,
+				C3B9FFD02C6BDC3C0089B018 /* FinalCalc.swift in Sources */,
 				C36DBB452C67CCC400BFC1A2 /* CalcTips.swift in Sources */,
 				C36DBB192C67CAA800BFC1A2 /* ViewController.swift in Sources */,
 				C36DBB152C67CAA800BFC1A2 /* AppDelegate.swift in Sources */,
