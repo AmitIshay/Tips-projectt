@@ -38,8 +38,9 @@ class CalcTips: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 
     @objc private func timeChanged(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        workerTime.text = dateFormatter.string(from: sender.date)
+         dateFormatter.dateFormat = "HH:mm"
+         dateFormatter.locale = Locale(identifier: "en_US_POSIX") // Ensures no regional format issues
+         workerTime.text = dateFormatter.string(from: sender.date)
     }
 
     @IBAction func nextButtonView(_ sender: Any) {
